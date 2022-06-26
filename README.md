@@ -81,22 +81,20 @@ Table 3.6: Custom Branch Predictor/Prophet-Critic Branch Predictor
 
 We chose to implement the Prophet-Critic hybrid as our custom branch predictor. Prophet-Critic utilizes two different branch predictors, labeled “prophet” and “critic” respectively, to make a final branch prediction. The prophet (using Gshare implementation) will make predictions 4 branches into the future, operating under the assumption that its predictions are correct to make new predictions which we will label the “branch future.” The critic (which uses 3-bit predictor logic) then uses the complete branch history and the branching future provided by the prophet as aggregate data in order to make a prediction and produces a result that will either “agree” or “disagree” with the prophet. The critic’s prediction will be the Prophet-Critic’s final prediction for each branch, with the reasoning that it can make more accurate predictions given the additional information on the branch behavior [1]. However, the prophet will be responsible for accurately predicting the majority of branches with the critic acting primarily as a fail-safe to correct any mispredictions.
 
-#### 4 Analysis
+### 4 Analysis
 
 When examining the results, our team decided to treat the straightforward take or do not take branch prediction algorithms as baselines: this is because of how simple the decision making is for both algorithms as both either takes the branch or does not take the branch in all cases. For comparing the results, we looked at the average of the difference in misprediction rate between both baselines and each of the branch prediction algorithms to obtain the percentage decrease in misprediction rate as seen in Figure 4.1: this comparison shows how well each branch prediction algorithm does compare to the average baseline.  In every case, each branch prediction algorithm outperformed the average baseline by at least 16%, and for the overall best case, the Correlating, Gshare, and Prophet-Critic all outperformed the baseline by 44.6%.
 
 1. **Percent Decrease Misprediction Rate =  [(MPT - MPA) +  (MPD - MPA) ] ፥ 2where  MPT is the misprediction rate for Always Take, MPD is the misprediction rate for Always Don’t Take, and MPA is the misprediction rate for the algorithm being looked at.**
 
 
-<img src="https://github.com/jayteaftw/CNN-Car-Object-Detection/blob/main/graphs/image2.png" height="400" />
+`<img src="https://github.com/jayteaftw/Branch-Trace-Analysis/blob/main/images/image1.png" height="400" />`
 
 However in a real-world scenario it is unlikely one is unable to choose which branch prediction algorithm should be used for each individual program: it is important then to contextualize the results by taking the average of each percentage decrease in misprediction rate as seen in Figure 4.2. Overall, each branch prediction algorithm had similar average performances with the 3-bit predictor performing the best and the 1-bit predictor performing the worst. Noticeably, the Prophet-Critic algorithm outperformed the Gshare algorithm which is reasonable since in our case the Gshare is the prophet while the 3-bit Predictor is the critic. Improvements could possibly be achieved by swapping both algorithms’ roles since individually the 3-bit Predictor outperformed the Gshare.
 
 
 
-<img src="https://github.com/jayteaftw/CNN-Car-Object-Detection/blob/main/graphs/image2.png" height="400" />
-
-
+`<img src="https://github.com/jayteaftw/Branch-Trace-Analysis/blob/main/images/image2.png" height="400" />`
 
 ### 5 Conclusion
 
@@ -111,6 +109,6 @@ After carrying out the experiments outlined above, the benefits of branch predic
 ### 7 Appendices
 
 
-<img src="https://github.com/jayteaftw/CNN-Car-Object-Detection/blob/main/graphs/image2.png" height="400" />
+<img src="https://github.com/jayteaftw/Branch-Trace-Analysis/blob/main/images/image3.png" height="400" />
 
 **Figure 7.1: Bar Graph of branch prediction algorithm vs misprediction rate for each log file**
