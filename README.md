@@ -87,7 +87,16 @@ When examining the results, our team decided to treat the straightforward take o
 
 1. **Percent Decrease Misprediction Rate =  [(MPT - MPA) +  (MPD - MPA) ] ፥ 2where  MPT is the misprediction rate for Always Take, MPD is the misprediction rate for Always Don’t Take, and MPA is the misprediction rate for the algorithm being looked at.**
 
+
+<img src="https://github.com/jayteaftw/CNN-Car-Object-Detection/blob/main/graphs/image2.png" height="400" />
+
 However in a real-world scenario it is unlikely one is unable to choose which branch prediction algorithm should be used for each individual program: it is important then to contextualize the results by taking the average of each percentage decrease in misprediction rate as seen in Figure 4.2. Overall, each branch prediction algorithm had similar average performances with the 3-bit predictor performing the best and the 1-bit predictor performing the worst. Noticeably, the Prophet-Critic algorithm outperformed the Gshare algorithm which is reasonable since in our case the Gshare is the prophet while the 3-bit Predictor is the critic. Improvements could possibly be achieved by swapping both algorithms’ roles since individually the 3-bit Predictor outperformed the Gshare.
+
+
+
+<img src="https://github.com/jayteaftw/CNN-Car-Object-Detection/blob/main/graphs/image2.png" height="400" />
+
+
 
 ### 5 Conclusion
 
@@ -100,3 +109,8 @@ After carrying out the experiments outlined above, the benefits of branch predic
 
 
 ### 7 Appendices
+
+
+<img src="https://github.com/jayteaftw/CNN-Car-Object-Detection/blob/main/graphs/image2.png" height="400" />
+
+**Figure 7.1: Bar Graph of branch prediction algorithm vs misprediction rate for each log file**
