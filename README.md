@@ -20,20 +20,62 @@ Throughout the COEN 313 class, we have talked about branch prediction algorithms
 
 Each algorithm was simulated using Python, and the custom branch predictor our team chose was the Prophet-Critic hybrid prediction model with Gshare as the prophet and a 3-bit predictor as the critic [1]. The four main log files contained over 69.4 million lines total and each file came from a different context of operation. This ensures that the algorithms differ in relative performance from file to file. All the prediction scripts were executed through the terminal where the output was the misprediction rate for each file. Below are the general statistics on all the branch trace files:
 
-| **Filename** | **art.br.txt** | **mcf.br.tx** | **sjeng.br.txt** | **sphinx3.br.txt** |
-| ------------------ | -------------------- | ------------------- | ---------------------- | ------------------------ |
-| # Branches         | 15,061,011           | 19,518,883          | 17,102,954             | 17,826,992               |
-| Taken              | 11,048,300           | 10,925,542          | 11,249,775             | 9,395,761                |
-| Not Taken          | 4,012,711            | 8,593,341           | 5,853,179              | 8,431,231                |
-| Taken %            | 73.36%               | 55.97%              | 65.78%                 | 52.71%                   |
-| Not Taken          | 26.64%               | 44.03%              | 34.22%                 | 47.29%                   |
-| Distinct           | 55                   | 76                  | 1235                   | 438                      |
+| **Filename** | **art.br.txt** | **mcf.br.txt** | **sjeng.br.txt** | **sphinx3.br.txt** |
+| ------------------ | -------------------- | -------------------- | ---------------------- | ------------------------ |
+| # Branches         | 15,061,011           | 19,518,883           | 17,102,954             | 17,826,992               |
+| Taken              | 11,048,300           | 10,925,542           | 11,249,775             | 9,395,761                |
+| Not Taken          | 4,012,711            | 8,593,341            | 5,853,179              | 8,431,231                |
+| Taken %            | 73.36%               | 55.97%               | 65.78%                 | 52.71%                   |
+| Not Taken          | 26.64%               | 44.03%               | 34.22%                 | 47.29%                   |
+| Distinct           | 55                   | 76                   | 1235                   | 438                      |
 
 Table 3.1: General Trace Analysis
 
 ##### 3.2 Results
 
 Listed below are the results our group found for each branch prediction algorithm: a graph showing the results side by side can be found labeled Figure 7.1:Bar Graph of branch prediction algorithm vs misprediction rate for each log file in the appendices.
+
+| Filename                   | art.br.txt | mcf.br.txt | sjeng.br.txt | sphinx3.br.txt |
+| -------------------------- | ---------- | ---------- | ------------ | -------------- |
+| # branches predicted taken | 15,061,011 | 19,518,883 | 17,102,954   | 17,826,992     |
+| Actual # taken             | 11,048,300 | 10,925,542 | 11,249,775   | 9,395,761      |
+| Taken Misprediction Rate   | 0.266      | 0.44       | 0.342        | 0.473          |
+
+Table 3.2: Static Branch Always Taken
+
+
+| Filename                       | art.br.txt | mcf.br.txt | sjeng.br.txt | sphinx3.br.txt |
+| ------------------------------ | ---------- | ---------- | ------------ | -------------- |
+| # branches predicted not taken | 15,061,011 | 19,518,883 | 17,102,954   | 17,826,992     |
+| Actual # taken                 | 4,012,711  | 8,593,341  | 5,853,179    | 8,431,231      |
+| Taken Misprediction Rat        | 0.734      | 0.56       | 0.658        | 0.527          |
+
+Table 3.3: Static Branch Always Not Taken
+
+
+| Filename | art.br.txt | mcf.br.txt | sjeng.br.txt | sphinx3.br.txt |
+| -------- | ---------- | ---------- | ------------ | -------------- |
+| 1 Bit    | 0.107      | 0.203      | 0.169        | 0.107          |
+| 2 Bit    | 0.056      | 0.162      | 0.133        | 0.061          |
+| 3 Bit    | 0.056      | 0.159      | 0.131        | 0.06           |
+
+Table 3.4: Dynamic Branch Predictor
+
+
+| Filename    | art.br.txt | mcf.br.txt | sjeng.br.txt | sphinx3.br.txt |
+| ----------- | ---------- | ---------- | ------------ | -------------- |
+| Correlating | 0.054      | 0.16       | 0.193        | 0.124          |
+| Gshare      | 0.054      | 0.176      | 0.246        | 0.135          |
+
+Table 3.5: Advanced Dynamic Branch Predictor
+
+
+| Filename       | art.br.txt | mcf.br.txt | sjeng.br.txt | sphinx3.br.txt |
+| -------------- | ---------- | ---------- | ------------ | -------------- |
+| Prophet-Critic | 0.512      | 0.384      | 0.397        | 0.406          |
+
+Table 3.6: Custom Branch Predictor/Prophet-Critic Branch Predictor
+
 
 ##### 3.3 Design and Rationale
 
