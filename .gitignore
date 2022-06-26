@@ -1,2 +1,6 @@
 venv/
 .DS_Store
+BranchTraces/art.br.txt
+BranchTraces/mcf.br.txt
+BranchTraces/sjeng.br.txt
+BranchTraces/sphinx3.br.txt
