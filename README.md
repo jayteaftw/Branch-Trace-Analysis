@@ -1,4 +1,4 @@
-# Branch-Trace-Analysis
+# Branch Trace Analysis
 
 ### Abstract
 
